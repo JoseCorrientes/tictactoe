@@ -8,7 +8,8 @@ function App() {
   return (
     <div
         className='flex flex-row w-auto h-screen bg-cover'
-        style={{backgroundImage: "url('/src/assets/14063419_5431981.jpg')"}}
+        style={{backgroundImage: "url('../src/assets/14063419_5431981.jpg')"}}
+        // style={{backgroundImage: "url('/src/assets/14063419_5431981.jpg')"}}
     >
     <BrowserRouter>
         <Routes>
