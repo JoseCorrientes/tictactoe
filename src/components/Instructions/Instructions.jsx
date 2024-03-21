@@ -20,18 +20,18 @@ function Instructions({handleSubmit}) {
 
   return (
     <div
-    className="flex flex-row justify-center items-center fixed inset-0 w-screen h-screen bg-black bg-opacity-70 "
+    className="flex flex-row justify-center items-center fixed inset-0 w-screen h-screen bg-black bg-opacity-70  "
 >
             <div
-                className="flex flex-col  items-center w-auto px-10 h-2/3  border-4 rounded-3xl bg-black bg-opacity-100 shadow-white shadow-lg ">
+                className="flex flex-col  items-center w-auto px-10 mt-2 sm:mt-0 h-auto m-1 sm:m-0 sm:h-2/3  border-4 rounded-3xl bg-black bg-opacity-100 shadow-white shadow-lg ">
                 
                     <p
-                        className="font-fontdinerSwanky text-3xl text-gray-400 mt-10 mb-5 "
+                        className="font-fontdinerSwanky text-2xl sm:text-3xl text-gray-400 sm:mt-10 sm:mb-5 mt-5"
                         >
                         Bienvenido a 
                     </p>    
                     <p
-                        className="font-fontdinerSwanky text-7xl text-orange-400 "
+                        className="font-fontdinerSwanky text-3xl sm:text-7xl text-orange-400 "
                         >Tic-Tac-Toe
                     </p>
 

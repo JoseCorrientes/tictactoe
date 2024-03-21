@@ -96,29 +96,18 @@ function Board() {
 
 
     const handleSubmit = (data)=>{
-        console.log('data')
-        console.log(data)
-        // if(data.humanStarts)  setTurn(1)
-        // else setTurn(2)
         if(data.humanStarts)  setWhoStartInstruction(1)
         else setWhoStartInstruction(2)
         if(data.humanStarts)  setTurn(1)
         else setTurn(2)
-
-
         let newRounds = parseInt(data.rounds)
-
         setRounds(newRounds)
         setSeeStart(false)
     }
-
-
-
     
     useEffect(()=>{
         setSeeStart(true);
     },[])
-
 
     useEffect(()=>{
         if(turn==2 && moves.length<9 ) {
@@ -134,7 +123,6 @@ function Board() {
     },[])
 
     useEffect(()=>{
-
         if(turn==2 && moves.length<9 ) {
             let newMove = play(playerOne, playerTwo, winners)
             let arrayCopy = [...playerTwo]
@@ -147,8 +135,6 @@ function Board() {
         }    
     },[startGameAgain, turn])
 
-
-
     const handleOkFinishMatch = ()=>{
         if (currentRound<=rounds && whoWins!="") {
                         setWhoWins("")
@@ -158,7 +144,6 @@ function Board() {
                         setPlayerTwoWinPos([])
                         setMoves([])
                         setTurn(whoStartInstruction);
-
         }
         if (currentRound!=rounds) {
             let newCurrentRound= currentRound+1;
@@ -171,19 +156,10 @@ function Board() {
         }   
     }    
 
-
-
-
-
-
-
-
     useEffect(()=>{
         let posOne=0; 
         let foundedOne=false;
         let arrayToCompareOne;
-
-
         while(posOne<winners.length && !foundedOne) {
             arrayToCompareOne = winners[posOne];
             let containsAllOne=true;
@@ -193,7 +169,6 @@ function Board() {
             if (containsAllOne) {
                 foundedOne=true;
                 setPlayerOneWinPos(arrayToCompareOne)
-
             } else {
                 posOne++;
             }
@@ -206,11 +181,7 @@ function Board() {
     }, [playerOne])
 
 
-
-
-    // creo que aca esta el problema cuando gana la pc debe cortar todo movimiento de player 1 antes de poner el cartel de gano la cpu, porque si no el player uno puede hacer un movimiento mas
     useEffect(()=>{
-        //Analiza si gano el playerTwo Computadora
         let posTwo=0; 
         let foundedTwo=false;
         let arrayToCompareTwo;
@@ -236,22 +207,13 @@ function Board() {
     },[playerTwo])
 
 
-
-
-
-
     useEffect(()=>{
-      
         if (playerOne.length + playerTwo.length ==9)  {
                 let result = tiePoints+1;
                 setTiePoints(result)
                 setWhoWins(3)
         }
     },[playerOne,playerTwo])
-
-
-
-
 
 
   return (
