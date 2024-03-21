@@ -5,13 +5,12 @@ function WinnerScore({rounds,  playerOnePoints, playerTwoPoints, handleReStart})
         return (
           <div
               className="w-1/3 h-auto border-4 rounded-3xl border-white bg-black shadow-white shadow-lg flex flex-col justify-center items-center"
-              // className="w-1/3 h-auto fixed top-2 border-4 rounded-3xl border-white bg-black shadow-white shadow-lg"
           >
                     <div
                         className="mt-4 flex flex-row justify-center items-center"
                     >
                             <h1
-                                className="font-fontdinerSwanky text-6xl text-gray-400 mr-4 "
+                                className="font-fontdinerSwanky text-5xl text-gray-400 mr-4 "
                             >Ronda:</h1> 
                             <h1
                                 className="font-fontdinerSwanky text-4xl text-red-700"
@@ -26,7 +25,7 @@ function WinnerScore({rounds,  playerOnePoints, playerTwoPoints, handleReStart})
                     >
                             <p
                                 className="font-fontdinerSwanky text-3xl text-red-700 mb-2"
-                            > El Jugador Ganó {playerOnePoints} a {playerTwoPoints}
+                            > ¡ Usted Ganó {playerOnePoints} a {playerTwoPoints} !
                             </p>
                             
             
@@ -42,7 +41,7 @@ function WinnerScore({rounds,  playerOnePoints, playerTwoPoints, handleReStart})
             
                         <p
                                 className="font-fontdinerSwanky text-3xl text-red-700"
-                            > La CPU Ganó {playerTwoPoints} a {playerOnePoints}
+                            > ¡ La CPU Ganó {playerTwoPoints} a {playerOnePoints} !
                             </p>
                             
                     </div>
@@ -56,7 +55,7 @@ function WinnerScore({rounds,  playerOnePoints, playerTwoPoints, handleReStart})
             
                         <p
                                 className="font-fontdinerSwanky text-3xl text-red-700"
-                            > El Jugador y la CPU empataron en {playerTwoPoints}
+                            > ¡ Empataron en {playerTwoPoints} !
                             </p>
                             
                     </div>
@@ -64,9 +63,9 @@ function WinnerScore({rounds,  playerOnePoints, playerTwoPoints, handleReStart})
 
                     <button
                             onClick={handleReStart}
-                            className=" text-white font-fontdinerSwanky text-3xl border-2 w-1/2 h-14 rounded-lg shadow-white shadow-lg hover:shadow-none hover:scale-95 hover:bg-gray-600 mb-6"
+                            className=" text-white font-fontdinerSwanky text-2xl border-2 w-1/2 h-14 rounded-lg shadow-white shadow-lg hover:shadow-none mt-6 hover:scale-95 hover:bg-gray-600 mb-6"
                             >
-                                Reiniciar
+                                Jugar
                     </button>
 
 

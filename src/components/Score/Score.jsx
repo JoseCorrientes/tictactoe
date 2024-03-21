@@ -9,34 +9,34 @@ function Score({rounds, currentRound, playerOnePoints, playerTwoPoints}) {
             className="mt-4 flex flex-row justify-center items-center"
         >
                 <h1
-                    className="font-fontdinerSwanky text-6xl text-gray-400 mr-4"
+                    className="font-fontdinerSwanky text-4xl text-gray-400 mr-4"
                 >Ronda:</h1> 
                 <h1
-                    className="font-fontdinerSwanky text-4xl text-red-700"
+                    className="font-fontdinerSwanky text-3xl text-red-700"
                 >{ (currentRound<=rounds)? currentRound: rounds}/{rounds}</h1> 
         </div>      
 
         <div
-            className="mt-4 flex flex-row justify-center items-center"
+            className="mt-2 flex flex-row justify-center items-center"
         >
                 <p
-                    className="font-fontdinerSwanky text-3xl text-gray-300 mr-4"
+                    className="font-fontdinerSwanky text-2xl text-gray-300 mr-4"
                 >Jugador:</p>
                 <p
-                    className="font-fontdinerSwanky text-3xl text-red-700"
+                    className="font-fontdinerSwanky text-2xl text-red-700"
                 >{playerOnePoints}</p>
 
         </div>   
 
         <div
-            className="mt-4 flex flex-row justify-center items-center mb-4"
+            className="mt-2 flex flex-row justify-center items-center mb-4"
         >
 
                 <p
-                    className="font-fontdinerSwanky text-3xl text-gray-300 mr-4"
+                    className="font-fontdinerSwanky text-2xl text-gray-300 mr-4"
                 >CPU:</p>
                 <p
-                    className="font-fontdinerSwanky text-3xl text-red-700"
+                    className="font-fontdinerSwanky text-2xl text-red-700"
                 >{playerTwoPoints}</p>
         </div>
 
