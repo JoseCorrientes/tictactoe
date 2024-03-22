@@ -6,6 +6,7 @@ import Modal from "../Modal/Modal";
 import Instructions from "../Instructions/Instructions";
 import Score from "../Score/Score";
 import WinnerScore from "../WinnerScore/WinnerScore";
+import { messages } from "../../tools/messages";
 
 
 function Board() {
@@ -25,8 +26,8 @@ function Board() {
     const [seeWinner, setSeeWinner] = useState(false);  //muestra el mensaje de ganador despues de toda una ronda
     const [tiePoints, setTiePoints] = useState(0); //cantidad de empates
     const [startGameAgain, setStartGameAgain] = useState(false);
-    const [whoStartInstruction, setWhoStartInstruction] = useState(1)
-
+    const [whoStartInstruction, setWhoStartInstruction] = useState()
+    const [language, setLanguage] = useState(1);  //Setea el lenguaje 0-Español, 1-Ingles
 
 
     const winners = [
@@ -128,7 +129,6 @@ function Board() {
         }
 
         if (playerOnePoints+playerTwoPoints+tiePoints==rounds) {
-                    console.log('termino termino')
                     setSeeWinner(true);
         }   
     }    
@@ -295,17 +295,9 @@ function Board() {
 
 
 
-        {/* {!seeWinner && seeStart &&            
-        <div
-            className="h-3/4 w-full"
-        />            
-        } */}
-
-
         {!seeWinner &&  !seeStart &&      
         <div
             className="h-3/4 "
-            // className="h-2/3"
         >
                     <div
                         className='flex flex-row justify-center items-center '
@@ -970,6 +962,8 @@ function Board() {
                         <Modal>
                             <Instructions
                                 handleSubmit={handleSubmit}
+                                language={language}
+                                messages={messages}
                             />
                         </Modal>
     }    
