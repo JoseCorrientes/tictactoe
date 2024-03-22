@@ -13,29 +13,17 @@ function Board() {
     const [playerOne, setPlayerOne] = useState([]); //arreglo de las casilla que ocupa el player one (humano)
     const [playerTwo, setPlayerTwo] = useState([]);//arreglo de las casillas que ocupa el player two CPU
     const [whoWins, setWhoWins] = useState("");  //Indica quien gana la partida 1- 2- ,3-empate
-
     const [playerOneWinPos, setPlayerOneWinPos] = useState([])
     const [playerTwoWinPos, setPlayerTwoWinPos] = useState([])
-
-    const[seeStart, setSeeStart] = useState(false)   //para ver el menu del principio
-    const[rounds, setRounds] = useState(99)   //numero de rondas a los que se juega.
-    // const[rounds, setRounds] = useState("")   //numero de rondas a los que se juega.
-    const[currentRound, setCurrentRound] = useState(1); //Ronda que se esta jugando
-
-    const[playerOnePoints, setPlayerOnePoints] = useState(0);   //cantidad de triunfos del jugador
-    const[playerTwoPoints, setPlayerTwoPoints]= useState(0);    //cantidad de triunfos del CPU 
-    
-
-
+    const [seeStart, setSeeStart] = useState(false)   //para ver el menu del principio
+    const [rounds, setRounds] = useState(99)   //numero de rondas a los que se juega.
+    const [currentRound, setCurrentRound] = useState(1); //Ronda que se esta jugando
+    const [playerOnePoints, setPlayerOnePoints] = useState(0);   //cantidad de triunfos del jugador
+    const [playerTwoPoints, setPlayerTwoPoints]= useState(0);    //cantidad de triunfos del CPU 
     const [turn, setTurn] = useState(1);  //A quien le toca jugar jugador 1 (humano) o jugador 2 (pc)
     const [moves, setMoves] = useState([]); //aca guarda cada jugada en orden    
-
-    // const[turnIntoRound, seeTurnIntoRound] = useState(1);   //a quien le toca jugar primero en base al menu introductorio 1-player one, 2-cpu
-
-    const[seeWinner, setSeeWinner] = useState(false);  //muestra el mensaje de ganador despues de toda una ronda
-
+    const [seeWinner, setSeeWinner] = useState(false);  //muestra el mensaje de ganador despues de toda una ronda
     const [tiePoints, setTiePoints] = useState(0); //cantidad de empates
-
     const [startGameAgain, setStartGameAgain] = useState(false);
     const [whoStartInstruction, setWhoStartInstruction] = useState(1)
 
@@ -52,9 +40,6 @@ function Board() {
         [3,5,7]
     ]
 
-
-
-
     const handleClick =(pos)=>{
             //player One Jugador Humano
             let arrayCopy = [...playerOne]
@@ -63,19 +48,11 @@ function Board() {
             let movesArrayCopy = [...moves]
             movesArrayCopy.push([1,pos])
             setMoves(movesArrayCopy)
-            // setTimeout(() => {
-            //     setTurn(2)
-            // }, 600)
-            // let newMoves = [...moves];
-
-
-
             setTurn(2)
     }  
 
 
     const handleReStart = ()=>{
-        console.log('reestablezco')
         setSeeWinner(false);
         setPlayerOnePoints(0);
         setPlayerTwoPoints(0);
@@ -318,11 +295,14 @@ function Board() {
 
 
 
+        {/* {!seeWinner && seeStart &&            
+        <div
+            className="h-3/4 w-full"
+        />            
+        } */}
 
 
-
-
-        {!seeWinner &&            
+        {!seeWinner &&  !seeStart &&      
         <div
             className="h-3/4 "
             // className="h-2/3"
@@ -973,17 +953,28 @@ function Board() {
 
                     </div>
                     
-                    {seeStart && 
+                    {/* {seeStart && 
                         <Modal>
                             <Instructions
                                 handleSubmit={handleSubmit}
                             />
                         </Modal>
-                    }    
+                    }     */}
 
     </div>            
 
     }                
+
+
+    {seeStart && 
+                        <Modal>
+                            <Instructions
+                                handleSubmit={handleSubmit}
+                            />
+                        </Modal>
+    }    
+
+
 
 
 
