@@ -52,6 +52,12 @@ function Board() {
             setTurn(2)
     }  
 
+    const handleChangeLanguage =(e)=>{
+        console.log('clicqueo')
+        console.log(e.target.value)
+        if (e.target.value==0) setLanguage(1)
+        else setLanguage(0);
+    }
 
     const handleReStart = ()=>{
         setSeeWinner(false);
@@ -245,7 +251,7 @@ function Board() {
 
 
 
-                    
+
                     {whoWins==3 &&
                     <div
                     className="flex flex-row justify-center items-center w-full mx-1 sm:w-1/3 px-5 h-auto sm:h-1/2  border-4 rounded-3xl shadow-white shadow-lg bg-black"
@@ -982,6 +988,7 @@ function Board() {
                                 handleSubmit={handleSubmit}
                                 language={language}
                                 messages={messages}
+                                handleChangeLanguage={handleChangeLanguage}
                             />
                         </Modal>
     }    

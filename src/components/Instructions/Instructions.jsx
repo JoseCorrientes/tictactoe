@@ -1,7 +1,10 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import Spanish from "../../assets/spanish150150.png";
+import English from "../../assets/english150150.png";
 
 
-function Instructions({handleSubmit, language, messages}) {
+
+function Instructions({handleSubmit, language, messages, handleChangeLanguage}) {
 
 
     const[humanStarts, setHumanStarts] = useState(false)
@@ -16,7 +19,7 @@ function Instructions({handleSubmit, language, messages}) {
         console.log(e.target.value)
         setRounds(e.target.value)
     }
-
+  
 
   return (
     <div
@@ -83,22 +86,46 @@ function Instructions({handleSubmit, language, messages}) {
                                         />
                                 </div>
                             </div>
-                            { rounds!="" &&
-                            <button
-                                    onClick={()=>handleSubmit({rounds, humanStarts })}
-                                    className="mt-10 text-white font-fontdinerSwanky text-xl sm:text-3xl border-2 w-1/3 sm:w-1/2 h-10 sm:h-20 rounded-lg shadow-white shadow-lg hover:shadow-none hover:scale-95 hover:bg-gray-600 mb-10 sm:mb-10"
+
+
+
+
+
+
+
+                            <div
+                                className="w-full flex flex-row justify-center items-center"
                             >
-                                {messages.playButton[language]}
-                            </button>
-                            } 
-                            { rounds=="" &&
-                            <button
-                                    disabled
-                                    className="mt-10 text-gray-900 font-fontdinerSwanky text-xl sm:text-3xl border-2 border-gray-900 w-1/3 sm:w-1/2 h-10 sm:h-20 rounded-lg shadow-gray-900 shadow-lg mb-10 sm:mb-10"
-                            >
-                                {messages.playButton[language]}
-                            </button>
-                            } 
+                                { rounds!="" &&
+                                <button
+                                        onClick={()=>handleSubmit({rounds, humanStarts })}
+                                        className="mt-10 text-white font-fontdinerSwanky text-xl sm:text-3xl border-2 w-1/3 sm:w-1/2 h-10 sm:h-20 rounded-lg shadow-white shadow-lg hover:shadow-none hover:scale-95 hover:bg-gray-600 mb-10 sm:mb-10"
+                                >
+                                    {messages.playButton[language]}
+                                </button>
+                                } 
+                                { rounds=="" &&
+                                <button
+                                        disabled
+                                        className="mt-10 text-gray-900 font-fontdinerSwanky text-xl sm:text-3xl border-2 border-gray-900 w-1/3 sm:w-1/2 h-10 sm:h-20 rounded-lg shadow-gray-900 shadow-lg mb-10 sm:mb-10"
+                                >
+                                    {messages.playButton[language]}
+                                </button>
+                                } 
+                                <button
+                                    onClick={(e)=>handleChangeLanguage(e)}
+                                    value={language} 
+                                    className="ml-10 w-[30px] h-[30px] sm:w-[60px] sm:h-[60px] cursor-pointer"
+                                    style={{backgroundImage: `url( ${(language==1)? Spanish: English}) `, backgroundSize: "contain"  }}
+                                >
+
+                                </button>
+                            </div>
+
+
+
+
+
 
 
                     </div>
