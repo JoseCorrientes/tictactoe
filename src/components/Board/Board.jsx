@@ -27,7 +27,7 @@ function Board() {
     const [tiePoints, setTiePoints] = useState(0); //cantidad de empates
     const [startGameAgain, setStartGameAgain] = useState(false);
     const [whoStartInstruction, setWhoStartInstruction] = useState()
-    const [language, setLanguage] = useState(1);  //Setea el lenguaje 0-Español, 1-Ingles
+    const [language, setLanguage] = useState(0);  //Setea el lenguaje 0-Español, 1-Ingles
 
 
     const winners = [
@@ -201,55 +201,63 @@ function Board() {
 
 
         <div
-            className="flex flex-row justify-center items-center h-1/4 w-full  mb-4"
+            className="flex flex-row justify-center items-center h-1/4 w-full  mb-4 "
         >
 
                     {whoWins==1 &&
                     <div
-                        className="flex flex-row justify-center items-center w-1/3 px-5 h-1/2  border-4 rounded-3xl shadow-white shadow-lg bg-black "
+                    className="flex flex-row justify-center items-center w-full mx-1 sm:w-1/3 px-5 h-auto sm:h-1/2  border-4 rounded-3xl shadow-white shadow-lg bg-black"
                         >
                             <p
-                            className="flex flex-row items-center justify-center w-5/6 h-[60px] bg-opacity-100  font-fontdinerSwanky text-3xl text-gray-400 r"
+                            className="flex flex-row items-center justify-center w-5/6 h-[70px] bg-opacity-100  font-fontdinerSwanky text-lg sm:text-3xl text-gray-400 r"
                             >
-                            ¡Usted Ganó!   
+                            {messages.playerWin2[language]}   
                             </p>
                             <button
                                 onClick={ handleOkFinishMatch}
-                                className="text-white font-fontdinerSwanky text-2xl border-4 w-1/6 h-[60px] rounded-lg shadow-white shadow-lg hover:shadow-none hover:scale-95 hover:bg-gray-600"
+                                className="text-white font-fontdinerSwanky text-lg sm:text-2xl border-4 w-1/4 sm:w-1/6 h-[56px] rounded-lg shadow-white shadow-lg hover:shadow-none hover:scale-95 hover:bg-gray-600"
                             >
                                 Ok
                             </button>
                     </div> 
                     }  
+
+
+
+
                     {whoWins==2 &&
                     <div
-                        className="flex flex-row justify-center items-center w-1/3 px-5 h-1/2  border-4 rounded-3xl shadow-white shadow-lg bg-black "
+                        className="flex flex-row justify-center items-center w-full mx-1 sm:w-1/3 px-5 h-auto sm:h-1/2  border-4 rounded-3xl shadow-white shadow-lg bg-black "
                         >
                             <p
-                            className="flex flex-row items-center justify-center w-5/6 h-[60px] bg-opacity-100  font-fontdinerSwanky text-3xl text-gray-400 r"
+                            className="flex flex-row items-center justify-center w-5/6 h-[70px] bg-opacity-100  font-fontdinerSwanky text-lg sm:text-3xl text-gray-400 r"
                             >
-                            ¡Ganó la CPU!   
+                            {messages.cpuWin2[language]}   
                             </p>
                             <button
                                 onClick={ handleOkFinishMatch}
-                                className="text-white font-fontdinerSwanky text-2xl border-4 w-1/6 h-[60px] rounded-lg shadow-white shadow-lg hover:shadow-none hover:scale-95 hover:bg-gray-600"
+                                className="text-white font-fontdinerSwanky text-lg sm:text-2xl border-4 w-1/4 sm:w-1/6 h-[56px] rounded-lg shadow-white shadow-lg hover:shadow-none hover:scale-95 hover:bg-gray-600"
                             >
                                 Ok
                             </button>
                     </div> 
                     }  
+
+
+
+                    
                     {whoWins==3 &&
                     <div
-                        className="flex flex-row justify-center items-center w-1/3 px-5 h-1/2  border-4 rounded-3xl shadow-white shadow-lg bg-black "
+                    className="flex flex-row justify-center items-center w-full mx-1 sm:w-1/3 px-5 h-auto sm:h-1/2  border-4 rounded-3xl shadow-white shadow-lg bg-black"
                         >
                             <p
-                            className="flex flex-row items-center justify-center w-5/6 h-[60px] bg-opacity-100  font-fontdinerSwanky text-3xl text-gray-400 r"
+                           className="flex flex-row items-center justify-center w-5/6 h-[70px] bg-opacity-100  font-fontdinerSwanky text-lg sm:text-3xl text-gray-400 r"
                             >
-                            ¡Empataron!   
+                            {messages.tieWin2[language]}   
                             </p>
                             <button
                                 onClick={ handleOkFinishMatch}
-                                className="text-white font-fontdinerSwanky text-2xl border-4 w-1/6 h-[60px] rounded-lg shadow-white shadow-lg hover:shadow-none hover:scale-95 hover:bg-gray-600"
+                                className="text-white font-fontdinerSwanky text-lg sm:text-2xl border-4 w-1/4 sm:w-1/6 h-[56px] rounded-lg shadow-white shadow-lg hover:shadow-none hover:scale-95 hover:bg-gray-600"
                             >
                                 Ok
                             </button>
@@ -271,6 +279,8 @@ function Board() {
                         currentRound={currentRound}
                         playerOnePoints={playerOnePoints}
                         playerTwoPoints={playerTwoPoints}
+                        languaje={language}
+                        messages={messages}
                     
                     />
                     }
@@ -280,6 +290,8 @@ function Board() {
                         playerOnePoints={playerOnePoints}
                         playerTwoPoints={playerTwoPoints}
                         handleReStart={handleReStart}
+                        messages={messages}
+                        languaje={language}
                     
                     />
                     }
@@ -295,12 +307,18 @@ function Board() {
 
 
 
+
+
+
+
+
         {!seeWinner &&  !seeStart &&      
         <div
-            className="h-3/4 "
+            className="mt-4 sm:mt-0 h-[300px] sm:h-2/4 w-[300px] sm:w-auto"
+            // className="mt-4 sm:mt-0 h-4/6 sm:h-2/4 w-5/6 sm:w-auto bg-blue-200"
         >
                     <div
-                        className='flex flex-row justify-center items-center '
+                        className=' w-full sm:w-auto flex flex-row justify-center items-center '
                     >
 
 
@@ -311,14 +329,14 @@ function Board() {
                         { !playerOne.includes(1) && !playerTwo.includes(1) && turn==1 && whoWins!=2 &&
                         <div
                             onClick={()=>handleClick(1)}
-                            className='w-[150px] h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-transparent border-l-transparent cursor-pointer hover:bg-black hover:bg-opacity-30'
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-transparent border-l-transparent cursor-pointer hover:bg-black hover:bg-opacity-30'
                         >
                         </div>
                         }
 
                         { !playerOne.includes(1) && !playerTwo.includes(1) && turn==1 && whoWins==2 &&
                         <div
-                            className='w-[150px] h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-transparent border-l-transparent'
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-transparent border-l-transparent'
                         >
                         </div>
                         }
@@ -328,7 +346,7 @@ function Board() {
                         {/* Cuando esta vacio y juega player two cpu */}
                         { !playerOne.includes(1) && !playerTwo.includes(1) && turn==2 &&
                         <div
-                            className='w-[150px] h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-transparent border-l-transparent '
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-transparent border-l-transparent '
                         >
                         </div>
                         }
@@ -340,7 +358,7 @@ function Board() {
                         {/* Cuando esta ocupado por player one Humano pero no es ganadora */}
                         { playerOne.includes(1) &&  !playerOneWinPos.includes(1) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-transparent border-l-transparent drop-shadow-3xl'
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-transparent border-l-transparent drop-shadow-3xl'
                         ><AiOutlineClose
                             className="h-full w-full  text-yellow-600"
                             
@@ -350,7 +368,7 @@ function Board() {
                         {/* Cuando esta ocupado por player one Humano pero ES ganadora */}
                         { playerOne.includes(1) && playerOneWinPos.includes(1) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-transparent border-l-transparent drop-shadow-3xl'
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-transparent border-l-transparent drop-shadow-3xl'
                         ><AiOutlineClose
                             className="h-full w-full  text-white bg-green-600"
                             
@@ -369,7 +387,7 @@ function Board() {
                         {/* Cuando esta ocupado por player two CPU pero no jugada ganadora */}
                         { playerTwo.includes(1) && !playerTwoWinPos.includes(1) &&
                             <p
-                            className='w-[150px] h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-transparent border-l-transparent '
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-transparent border-l-transparent '
                         ><AiTwotoneMeh
                         className="h-full w-full"
                         />
@@ -377,7 +395,7 @@ function Board() {
                         }
                          { playerTwo.includes(1) && playerTwoWinPos.includes(1) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-transparent border-l-transparent '
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-transparent border-l-transparent '
                         ><AiTwotoneMeh
                             className="h-full w-full  text-white bg-red-600"
                             
@@ -423,14 +441,14 @@ function Board() {
                         { !playerOne.includes(2) && !playerTwo.includes(2) && turn==1 && whoWins!=2 && 
                         <div
                             onClick={()=>handleClick(2)}
-                            className='w-[150px] h-[150px] border-4  border-l-orange-500 border-t-transparent border-r-orange-500 border-b-orange-500 cursor-pointer hover:bg-black hover:bg-opacity-30'
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-l-orange-500 border-t-transparent border-r-orange-500 border-b-orange-500 cursor-pointer hover:bg-black hover:bg-opacity-30'
                         >
                         </div>
                         }
 
                         { !playerOne.includes(2) && !playerTwo.includes(2) && turn==1 && whoWins==2 &&
                             <div
-                                className='w-[150px] h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-transparent border-l-orange-500 '
+                                className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-transparent border-l-orange-500 '
                             >
                             </div>
                         }                            
@@ -440,7 +458,7 @@ function Board() {
 
                         { !playerOne.includes(2) && !playerTwo.includes(2) && turn==2 &&
                         <div
-                            className='w-[150px] h-[150px] border-4  border-l-orange-500 border-t-transparent border-r-orange-500 border-b-orange-500 '
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-l-orange-500 border-t-transparent border-r-orange-500 border-b-orange-500 '
                         >
                         </div>
                         }
@@ -448,7 +466,7 @@ function Board() {
 
                         { playerOne.includes(2) && !playerOneWinPos.includes(2) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4  border-l-orange-500 border-t-transparent border-r-orange-500 border-b-orange-500 '
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-l-orange-500 border-t-transparent border-r-orange-500 border-b-orange-500 '
                         ><AiOutlineClose
                             className="h-full w-full text-yellow-600"
                         />
@@ -456,7 +474,7 @@ function Board() {
                         }
                         { playerOne.includes(2) && playerOneWinPos.includes(2) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4  border-l-orange-500 border-t-transparent border-r-orange-500 border-b-orange-500 '
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-l-orange-500 border-t-transparent border-r-orange-500 border-b-orange-500 '
                         ><AiOutlineClose
                             className="h-full w-full text-white bg-green-600"
                         />
@@ -464,7 +482,7 @@ function Board() {
                         }
                         { playerTwo.includes(2) && !playerTwoWinPos.includes(2) &&
                             <p
-                            className='w-[150px] h-[150px] border-4  border-l-orange-500 border-t-transparent border-r-orange-500 border-b-orange-500 '
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-l-orange-500 border-t-transparent border-r-orange-500 border-b-orange-500 '
                         ><AiTwotoneMeh
                         className="h-full w-full"
                         />
@@ -472,7 +490,7 @@ function Board() {
                         }
                         { playerTwo.includes(2) && playerTwoWinPos.includes(2) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-transparent border-l-orange-500'
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-transparent border-l-orange-500'
                         ><AiTwotoneMeh
                             className="h-full w-full  text-white bg-red-600"
                             
@@ -491,13 +509,13 @@ function Board() {
                         { !playerOne.includes(3) && !playerTwo.includes(3) && turn==1 && whoWins!=2 &&
                         <div
                             onClick={()=>handleClick(3)}
-                            className='w-[150px] h-[150px] border-4 border-l-orange-500 border-b-orange-500 border-t-transparent border-r-transparent cursor-pointer hover:bg-black hover:bg-opacity-30'
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-l-orange-500 border-b-orange-500 border-t-transparent border-r-transparent cursor-pointer hover:bg-black hover:bg-opacity-30'
                         >
                         </div>
                         }
                         { !playerOne.includes(3) && !playerTwo.includes(3) && turn==1 && whoWins==2 &&
                             <div
-                                className='w-[150px] h-[150px] border-4  border-r-transparent border-b-orange-500 border-t-transparent border-l-orange-500 '
+                                className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-r-transparent border-b-orange-500 border-t-transparent border-l-orange-500 '
                             >
                             </div>
                         } 
@@ -505,13 +523,13 @@ function Board() {
 
                         { !playerOne.includes(3) && !playerTwo.includes(3) && turn==2 &&
                         <div
-                            className='w-[150px] h-[150px] border-4 border-l-orange-500 border-b-orange-500 border-t-transparent border-r-transparent '
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-l-orange-500 border-b-orange-500 border-t-transparent border-r-transparent '
                         >
                         </div>
                         }
                         { playerOne.includes(3) && !playerOneWinPos.includes(3) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4  border-l-orange-500 border-b-orange-500 border-t-transparent border-r-transparent'
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-l-orange-500 border-b-orange-500 border-t-transparent border-r-transparent'
                         ><AiOutlineClose
                             className="h-full w-full text-yellow-600"
                             
@@ -520,7 +538,7 @@ function Board() {
                         }
                          { playerOne.includes(3) && playerOneWinPos.includes(3) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4  border-l-orange-500 border-t-transparent border-r-transparent border-b-orange-500 '
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-l-orange-500 border-t-transparent border-r-transparent border-b-orange-500 '
                         ><AiOutlineClose
                             className="h-full w-full text-white bg-green-600"
                         />
@@ -530,7 +548,7 @@ function Board() {
 
                         { playerTwo.includes(3) && !playerTwoWinPos.includes(3) &&
                             <p
-                            className='w-[150px] h-[150px] border-4  border-l-orange-500 border-b-orange-500 border-t-transparent border-r-transparent '
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-l-orange-500 border-b-orange-500 border-t-transparent border-r-transparent '
                         ><AiTwotoneMeh
                         className="h-full w-full"
                         />
@@ -538,7 +556,7 @@ function Board() {
                         }
                          { playerTwo.includes(3) && playerTwoWinPos.includes(3) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4  border-l-orange-500 border-b-orange-500 border-t-transparent border-r-transparent '
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-l-orange-500 border-b-orange-500 border-t-transparent border-r-transparent '
                         ><AiTwotoneMeh
                             className="h-full w-full  text-white bg-red-600"
                             
@@ -565,13 +583,13 @@ function Board() {
                         { !playerOne.includes(4) && !playerTwo.includes(4) && turn==1 && whoWins!=2 &&
                         <div
                             onClick={()=>handleClick(4)}
-                            className='w-[150px] h-[150px] border-4 border-l-transparent border-b-orange-500 border-t-orange-500 border-r-orange-500 cursor-pointer hover:bg-black hover:bg-opacity-30'
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-l-transparent border-b-orange-500 border-t-orange-500 border-r-orange-500 cursor-pointer hover:bg-black hover:bg-opacity-30'
                         >
                         </div>
                         }
                         { !playerOne.includes(4) && !playerTwo.includes(4) && turn==1 && whoWins==2 &&
                             <div
-                                className='w-[150px] h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-orange-500 border-l-transparent '
+                                className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-r-orange-500 border-b-orange-500 border-t-orange-500 border-l-transparent '
                             >
                             </div>
                         } 
@@ -579,13 +597,13 @@ function Board() {
 
                         { !playerOne.includes(4) && !playerTwo.includes(4) && turn==2 &&
                         <div
-                            className='w-[150px] h-[150px] border-4 border-l-transparent border-b-orange-500 border-t-orange-500 border-r-orange-500 '
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-l-transparent border-b-orange-500 border-t-orange-500 border-r-orange-500 '
                         >
                         </div>
                         }
                         { playerOne.includes(4) && !playerOneWinPos.includes(4) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4 border-l-transparent border-b-orange-500 border-t-orange-500 border-r-orange-500'
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-l-transparent border-b-orange-500 border-t-orange-500 border-r-orange-500'
                         ><AiOutlineClose
                             className="h-full w-full text-yellow-600"
                             
@@ -594,7 +612,7 @@ function Board() {
                         }
                         { playerOne.includes(4) && playerOneWinPos.includes(4) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4  border-l-transparent border-t-orange-500 border-r-orange-500 border-b-orange-500 '
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-l-transparent border-t-orange-500 border-r-orange-500 border-b-orange-500 '
                         ><AiOutlineClose
                             className="h-full w-full text-white bg-green-600"
                         />
@@ -605,7 +623,7 @@ function Board() {
 
                         { playerTwo.includes(4) && !playerTwoWinPos.includes(4) &&
                             <p
-                            className='w-[150px] h-[150px] border-4  border-l-transparent border-b-orange-500 border-t-orange-500 border-r-orange-500'
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-l-transparent border-b-orange-500 border-t-orange-500 border-r-orange-500'
                         ><AiTwotoneMeh
                         className="h-full w-full"
                         />
@@ -613,7 +631,7 @@ function Board() {
                         }
                         { playerTwo.includes(4) && playerTwoWinPos.includes(4) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4  border-l-transparent border-b-orange-500 border-t-orange-500 border-r-orange-500 '
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-l-transparent border-b-orange-500 border-t-orange-500 border-r-orange-500 '
                         ><AiTwotoneMeh
                             className="h-full w-full  text-white bg-red-600"
                             
@@ -631,13 +649,13 @@ function Board() {
                         { !playerOne.includes(5) && !playerTwo.includes(5) && turn==1 && whoWins!=2 &&
                         <div
                             onClick={()=>handleClick(5)}
-                            className='w-[150px] h-[150px] border-4 border-orange-500 cursor-pointer hover:bg-black hover:bg-opacity-30'
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-orange-500 cursor-pointer hover:bg-black hover:bg-opacity-30'
                         >
                         </div>
                         }
                          { !playerOne.includes(5) && !playerTwo.includes(5) && turn==1 && whoWins==2 &&
                             <div
-                                className='w-[150px] h-[150px] border-4  border-orange-500 '
+                                className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-orange-500 '
                             >
                             </div>
                         } 
@@ -645,13 +663,13 @@ function Board() {
 
                         { !playerOne.includes(5) && !playerTwo.includes(5) && turn==2 &&
                         <div
-                            className='w-[150px] h-[150px] border-4 border-orange-500'
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-orange-500'
                         >
                         </div>
                         }
                         { playerOne.includes(5) && !playerOneWinPos.includes(5) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4 border-orange-500'
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-orange-500'
                         ><AiOutlineClose
                             className="h-full w-full text-yellow-600"
                         />
@@ -659,7 +677,7 @@ function Board() {
                         }
                         { playerOne.includes(5) && playerOneWinPos.includes(5) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4  border-l-orange-500 border-t-orange-500 border-r-orange-500 border-b-orange-500 '
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-l-orange-500 border-t-orange-500 border-r-orange-500 border-b-orange-500 '
                         ><AiOutlineClose
                             className="h-full w-full text-white bg-green-600"
                         />
@@ -670,7 +688,7 @@ function Board() {
 
                         { playerTwo.includes(5) && !playerTwoWinPos.includes(5) &&
                             <p
-                            className='w-[150px] h-[150px] border-4 border-orange-500'
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-orange-500'
                         ><AiTwotoneMeh
                         className="h-full w-full"
                         />
@@ -678,7 +696,7 @@ function Board() {
                         }
                          { playerTwo.includes(5) && playerTwoWinPos.includes(5) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4   border-orange-500 '
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4   border-orange-500 '
                         ><AiTwotoneMeh
                             className="h-full w-full  text-white bg-red-600"
                             
@@ -694,14 +712,14 @@ function Board() {
                     { !playerOne.includes(6) && !playerTwo.includes(6) && turn==1 && whoWins!=2 &&
                         <div
                             onClick={()=>handleClick(6)}
-                            className='w-[150px] h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-orange-500 border-r-transparent cursor-pointer hover:bg-black hover:bg-opacity-30'
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-orange-500 border-r-transparent cursor-pointer hover:bg-black hover:bg-opacity-30'
                         >
                         </div>
                         }
 
                         { !playerOne.includes(6) && !playerTwo.includes(6) && turn==1 && whoWins==2 &&
                             <div
-                                className='w-[150px] h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-orange-500 border-r-transparent'
+                                className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-orange-500 border-r-transparent'
                             >
                             </div>
                         }     
@@ -709,13 +727,13 @@ function Board() {
 
                     { !playerOne.includes(6) && !playerTwo.includes(6) && turn==2 &&
                         <div
-                            className='w-[150px] h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-orange-500 border-r-transparent '
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-orange-500 border-r-transparent '
                         >
                         </div>
                         }
                         { playerOne.includes(6) && !playerOneWinPos.includes(6) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-orange-500 border-r-transparent'
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-orange-500 border-r-transparent'
                         ><AiOutlineClose
                             className="h-full w-full text-yellow-600"
                         />
@@ -723,7 +741,7 @@ function Board() {
                         }
                         { playerOne.includes(6) && playerOneWinPos.includes(6) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4  border-l-orange-500 border-t-orange-500 border-r-transparent border-b-orange-500 '
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-l-orange-500 border-t-orange-500 border-r-transparent border-b-orange-500 '
                         ><AiOutlineClose
                             className="h-full w-full text-white bg-green-600"
                         />
@@ -735,7 +753,7 @@ function Board() {
 
                         { playerTwo.includes(6) && !playerTwoWinPos.includes(6) &&
                             <p
-                            className='w-[150px] h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-orange-500 border-r-transparent'
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-orange-500 border-r-transparent'
                         ><AiTwotoneMeh
                         className="h-full w-full"
                         />
@@ -743,7 +761,7 @@ function Board() {
                         }
                         { playerTwo.includes(6) && playerTwoWinPos.includes(6) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4  border-t-orange-500 border-l-orange-500 border-b-orange-500 border-r-transparent '
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-t-orange-500 border-l-orange-500 border-b-orange-500 border-r-transparent '
                         ><AiTwotoneMeh
                             className="h-full w-full  text-white bg-red-600"
                             
@@ -761,13 +779,13 @@ function Board() {
                         { !playerOne.includes(7) && !playerTwo.includes(7) && turn==1 && whoWins!=2 &&
                         <div
                             onClick={()=>handleClick(7)}
-                            className='w-[150px] h-[150px] border-4 border-t-orange-500 border-l-transparent border-b-transparent border-r-orange-500 cursor-pointer hover:bg-black hover:bg-opacity-30'
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-t-orange-500 border-l-transparent border-b-transparent border-r-orange-500 cursor-pointer hover:bg-black hover:bg-opacity-30'
                         >
                         </div>
                         }
                          { !playerOne.includes(7) && !playerTwo.includes(7) && turn==1 && whoWins==2 &&
                             <div
-                                className='w-[150px] h-[150px] border-4 border-t-orange-500 border-l-transparent border-b-transparent border-r-orange-500'
+                                className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-t-orange-500 border-l-transparent border-b-transparent border-r-orange-500'
                             >
                             </div>
                         }  
@@ -776,13 +794,13 @@ function Board() {
 
                         { !playerOne.includes(7) && !playerTwo.includes(7) && turn==2 &&
                         <div
-                            className='w-[150px] h-[150px] border-4 border-t-orange-500 border-l-transparent border-b-transparent border-r-orange-500 '
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-t-orange-500 border-l-transparent border-b-transparent border-r-orange-500 '
                         >
                         </div>
                         }
                         { playerOne.includes(7) && !playerOneWinPos.includes(7) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4  border-t-orange-500 border-l-transparent border-b-transparent border-r-orange-500 '
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-t-orange-500 border-l-transparent border-b-transparent border-r-orange-500 '
                         ><AiOutlineClose
                             className="h-full w-full text-yellow-600"
                         />
@@ -790,7 +808,7 @@ function Board() {
                         }
                          { playerOne.includes(7) && playerOneWinPos.includes(7) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4  border-l-transparent border-t-orange-500 border-r-orange-500 border-b-transparent '
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-l-transparent border-t-orange-500 border-r-orange-500 border-b-transparent '
                         ><AiOutlineClose
                             className="h-full w-full text-white bg-green-600"
                         />
@@ -800,7 +818,7 @@ function Board() {
 
                         { playerTwo.includes(7) && !playerTwoWinPos.includes(7) &&
                             <p
-                            className='w-[150px] h-[150px] border-4  border-t-orange-500 border-l-transparent border-b-transparent border-r-orange-500 '
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-t-orange-500 border-l-transparent border-b-transparent border-r-orange-500 '
                         ><AiTwotoneMeh
                         className="h-full w-full"
                         />
@@ -808,7 +826,7 @@ function Board() {
                         }
                         { playerTwo.includes(7) && playerTwoWinPos.includes(7) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4  border-t-orange-500 border-l-transparent border-b-transparent border-r-orange-500 '
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-t-orange-500 border-l-transparent border-b-transparent border-r-orange-500 '
                         ><AiTwotoneMeh
                             className="h-full w-full  text-white bg-red-600"
                             
@@ -823,13 +841,13 @@ function Board() {
                         { !playerOne.includes(8) && !playerTwo.includes(8) && turn==1 && whoWins!=2 &&
                         <div
                             onClick={()=>handleClick(8)}
-                            className='w-[150px] h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-orange-500 cursor-pointer hover:bg-black hover:bg-opacity-30'
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-orange-500 cursor-pointer hover:bg-black hover:bg-opacity-30'
                         >
                         </div>
                         }
                         { !playerOne.includes(8) && !playerTwo.includes(8) && turn==1 && whoWins==2 &&
                             <div
-                                className='w-[150px] h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-orange-500'
+                                className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-orange-500'
                             >
                             </div>
                         } 
@@ -837,13 +855,13 @@ function Board() {
 
                         { !playerOne.includes(8) && !playerTwo.includes(8) && turn==2 &&
                         <div
-                            className='w-[150px] h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-orange-500 '
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-orange-500 '
                         >
                         </div>
                         }
                         { playerOne.includes(8) && !playerOneWinPos.includes(8) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-orange-500'
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-orange-500'
                         ><AiOutlineClose
                             className="h-full w-full text-yellow-600"
                         />
@@ -851,7 +869,7 @@ function Board() {
                         }
                         { playerOne.includes(8) && playerOneWinPos.includes(8) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4  border-l-orange-500 border-t-orange-500 border-r-orange-500 border-b-transparent '
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-l-orange-500 border-t-orange-500 border-r-orange-500 border-b-transparent '
                         ><AiOutlineClose
                             className="h-full w-full text-white bg-green-600"
                         />
@@ -861,7 +879,7 @@ function Board() {
 
                         { playerTwo.includes(8) && !playerTwoWinPos.includes(8) &&
                             <p
-                            className='w-[150px] h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-orange-500'
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-orange-500'
                         ><AiTwotoneMeh
                         className="h-full w-full"
                         />
@@ -869,7 +887,7 @@ function Board() {
                         }
                         { playerTwo.includes(8) && playerTwoWinPos.includes(8) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4   border-t-orange-500 border-l-orange-500 border-b-transparent border-r-orange-500'
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4   border-t-orange-500 border-l-orange-500 border-b-transparent border-r-orange-500'
                         ><AiTwotoneMeh
                             className="h-full w-full  text-white bg-red-600"
                             
@@ -887,13 +905,13 @@ function Board() {
                         { !playerOne.includes(9) && !playerTwo.includes(9) && turn==1 && whoWins!=2 &&
                         <div
                             onClick={()=>handleClick(9)}
-                            className='w-[150px] h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-transparent cursor-pointer hover:bg-black hover:bg-opacity-30'
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-transparent cursor-pointer hover:bg-black hover:bg-opacity-30'
                         >
                         </div>
                         }
                          { !playerOne.includes(9) && !playerTwo.includes(9) && turn==1 && whoWins==2 &&
                             <div
-                                className='w-[150px] h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-transparent'
+                                className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-transparent'
                             >
                             </div>
                         } 
@@ -901,13 +919,13 @@ function Board() {
 
                         { !playerOne.includes(9) && !playerTwo.includes(9) && turn==2 &&
                         <div
-                            className='w-[150px] h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-transparent  '
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-transparent  '
                         >
                         </div>
                         }
                         { playerOne.includes(9) && !playerOneWinPos.includes(9) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-transparent'
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-transparent'
                         ><AiOutlineClose
                             className="h-full w-full text-yellow-600"
                         />
@@ -915,7 +933,7 @@ function Board() {
                         }
                         { playerOne.includes(9) && playerOneWinPos.includes(9) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4  border-l-orange-500 border-t-orange-500 border-r-transparent border-b-transparent '
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4  border-l-orange-500 border-t-orange-500 border-r-transparent border-b-transparent '
                         ><AiOutlineClose
                             className="h-full w-full text-white bg-green-600"
                         />
@@ -926,7 +944,7 @@ function Board() {
 
                         { playerTwo.includes(9) && !playerTwoWinPos.includes(9) &&
                             <p
-                            className='w-[150px] h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-transparent'
+                            className='w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4 border-t-orange-500 border-l-orange-500 border-b-transparent border-r-transparent'
                         ><AiTwotoneMeh
                         className="h-full w-full"
                         />
@@ -934,7 +952,7 @@ function Board() {
                         }
                         { playerTwo.includes(9) && playerTwoWinPos.includes(9) &&
                             <p
-                            className='flex flex-row justify-center items-center w-[150px] h-[150px] border-4   border-t-orange-500 border-l-orange-500 border-b-transparent border-r-transparent'
+                            className='flex flex-row justify-center items-center w-1/3 h-[100px] sm:w-[150px] sm:h-[150px] border-4   border-t-orange-500 border-l-orange-500 border-b-transparent border-r-transparent'
                         ><AiTwotoneMeh
                             className="h-full w-full  text-white bg-red-600"
                             
