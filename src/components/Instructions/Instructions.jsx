@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import Spanish from "../../assets/spanish150150.png";
 import English from "../../assets/english150150.png";
-
+import EnglishInvert from "../../assets/english150150invert.png";
+import SpanishInvert from "../../assets/spanish150150Invert.png";
 
 
 function Instructions({handleSubmit, language, messages, handleChangeLanguage}) {
@@ -117,15 +118,51 @@ function Instructions({handleSubmit, language, messages, handleChangeLanguage}) 
                                 >
                                     {messages.playButton[language]}
                                 </button>
-                                } 
+                                }
+
+
+                                {language==0 && 
+                                <button
+                                    onClick={(e)=>handleChangeLanguage(e)}
+                                    value={language} 
+                                    className="ml-10 w-[30px] h-[30px] sm:w-[60px] sm:h-[60px] cursor-pointer "
+                                    style={{backgroundImage: `url( ${English}) `, backgroundSize: "contain"  }}
+                                >
+                                </button>
+                                }
+                                {language==0 && 
+                                <button
+                                    //onClick={(e)=>handleChangeLanguage(e)}
+                                    disabled
+                                    value={language} 
+                                    className="ml-10 w-[30px] h-[30px] sm:w-[60px] sm:h-[60px] "
+                                    style={{backgroundImage: `url( ${SpanishInvert}) `, backgroundSize: "contain"  }}
+                                >
+
+                                </button>
+                                
+                                }
+
+                                {language==1 &&
+                                <button
+                                    //onClick={(e)=>handleChangeLanguage(e)}
+                                    disabled
+                                    value={language} 
+                                    className="ml-10 w-[30px] h-[30px] sm:w-[60px] sm:h-[60px] "
+                                    style={{backgroundImage: `url( ${EnglishInvert}) `, backgroundSize: "contain"  }}
+                                >
+                                </button>
+                                }
+                                {language==1 &&
                                 <button
                                     onClick={(e)=>handleChangeLanguage(e)}
                                     value={language} 
                                     className="ml-10 w-[30px] h-[30px] sm:w-[60px] sm:h-[60px] cursor-pointer"
-                                    style={{backgroundImage: `url( ${(language==1)? Spanish: English}) `, backgroundSize: "contain"  }}
+                                    style={{backgroundImage: `url( ${Spanish}) `, backgroundSize: "contain"  }}
                                 >
-
                                 </button>
+                                }
+
                             </div>
 
 
