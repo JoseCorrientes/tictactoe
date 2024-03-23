@@ -10,8 +10,8 @@ export const messages = {
                 cpuWin: ["¡ La Máquina Ganó ", "The Machine won "],
                 cpuWin2: ["¡ La Máquina Ganó !", "The Machine won !"],
                 nexus: [" a ", "to"],
-                playerWin: ["¡ Ganaste ", "The Player won "],
-                playerWin2: ["¡ Ganaste !", "The Player won !"],
+                playerWin: ["¡ Ganaste ", "You won "],
+                playerWin2: ["¡ Ganaste !", "You won !"],
                 tieWin2: ["¡ Empataron !", "You have tied !"],
 
                 tieWin: ["¡ Empataron en ", "You have tied on "]
