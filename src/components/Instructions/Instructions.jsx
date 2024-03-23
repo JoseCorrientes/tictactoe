@@ -12,12 +12,16 @@ function Instructions({handleSubmit, language, messages, handleChangeLanguage}) 
 
     const handleChangeHumanStarts = (e)=>{
         setHumanStarts(prev=>!humanStarts)
-        console.log(e.target.value)
     }
 
     const handleChangeRounds =(e)=>{
-        console.log(e.target.value)
-        setRounds(e.target.value)
+        const value = e.target.value;
+        if(isNaN(value)) {
+            e.target.value=value.slice(0,-1)
+        } else {
+            if (e.target.value>=100) e.target.value = value.slice(0,-1)
+        }       
+        setRounds(e.target.value);
     }
   
 
@@ -79,8 +83,10 @@ function Instructions({handleSubmit, language, messages, handleChangeLanguage}) 
                                         >
                                         <input
                                                     onChange={(e)=>handleChangeRounds(e)}
+                                                    
                                                     className="w-[60px] h-[30px] sm:w-[50px] sm:h-[50px] rounded-lg border-blue-500 border-4 text-center"
                                                     type="text"
+                                                    pattern="[0-9]"
                                                     value={rounds}
                                                     name="rounds"
                                         />
