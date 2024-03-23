@@ -20,7 +20,7 @@ function Instructions({handleSubmit, language, messages, handleChangeLanguage}) 
         if(isNaN(value)) {
             e.target.value=value.slice(0,-1)
         } else {
-            if (e.target.value>=100) e.target.value = value.slice(0,-1)
+            if (e.target.value>=100 || e.target.value==0)  e.target.value = value.slice(0,-1)
         }       
         setRounds(e.target.value);
     }

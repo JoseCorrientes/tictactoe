@@ -13,6 +13,5 @@ export const messages = {
                 playerWin: ["¡ Ganaste ", "You won "],
                 playerWin2: ["¡ Ganaste !", "You won !"],
                 tieWin2: ["¡ Empataron !", "You have tied !"],
-
                 tieWin: ["¡ Empataron en ", "You have tied on "]
 }

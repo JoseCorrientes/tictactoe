@@ -320,11 +320,12 @@ function Board() {
 
         {!seeWinner &&  !seeStart &&      
         <div
-            className="mt-4 sm:mt-0 h-[300px] sm:h-2/4 w-[300px] sm:w-auto"
-            // className="mt-4 sm:mt-0 h-4/6 sm:h-2/4 w-5/6 sm:w-auto bg-blue-200"
+            className="mt-4 sm:mt-0 h-3/4 sm:h-3/4 w-[300px] sm:w-auto"
+            // className="mt-4 sm:mt-0 h-[300px] sm:h-2/4 w-[300px] sm:w-auto"
         >
                     <div
-                        className=' w-full sm:w-auto flex flex-row justify-center items-center '
+                        className=' w-full [h-300px] sm:w-auto flex flex-row justify-center items-center '
+                        // className=' w-full sm:w-auto flex flex-row justify-center items-center '
                     >
 
 
@@ -968,15 +969,6 @@ function Board() {
 
 
                     </div>
-                    
-                    {/* {seeStart && 
-                        <Modal>
-                            <Instructions
-                                handleSubmit={handleSubmit}
-                            />
-                        </Modal>
-                    }     */}
-
     </div>            
 
     }                
